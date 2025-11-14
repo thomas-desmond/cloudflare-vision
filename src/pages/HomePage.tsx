@@ -7,9 +7,9 @@ import { cn } from '@/lib/utils';
 const themes = [
   {
     icon: Globe,
-    title: 'The “Region-less” Region Earth Platform',
+    title: 'Region: Earth',
     description:
-      "Deploy globally, not regionally. Our platform is the entire global network. You don't choose a region. You deploy once, and your code runs everywhere, by default.",
+      'Our smart network positions your workloads optimally — close to users, close to data.',
   },
   {
     icon: Layers3,
