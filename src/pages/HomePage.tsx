@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Globe, Layers3, Network, ChevronDown, Cloud, ArrowLeft, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -24,16 +24,29 @@ const themes = [
       'By building on a single, global edge network, we eliminate entire categories of problems. Deploy without thinking about regions, VM sizes, load balancers, or cold starts.',
   },
 ];
-const FADE_UP_ANIMATION_VARIANTS: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { type: 'spring' } },
-};
 export function HomePage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50">
       <HeroSection />
       <main id="themes" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24 lg:py-32">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+            }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+              Our Core Philosophy
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Everything you'll see is built on these three foundational principles.
+            </p>
+          </motion.div>
           <ThemesSlider />
         </div>
       </main>
@@ -49,12 +62,6 @@ function ThemesSlider() {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? themes.length - 1 : prev - 1));
   };
-  useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
   const slideVariants: Variants = {
     hidden: { opacity: 0, x: 50, scale: 0.95 },
     visible: { opacity: 1, x: 0, scale: 1 },
@@ -63,7 +70,7 @@ function ThemesSlider() {
   const theme = themes[currentSlide];
   return (
     <div className="relative flex flex-col items-center justify-center">
-      <div className="w-full max-w-2xl min-h-[320px] sm:min-h-[280px] md:min-h-[260px] lg:min-h-[240px]">
+      <div className="w-full max-w-3xl min-h-[300px] sm:min-h-[260px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -74,40 +81,40 @@ function ThemesSlider() {
             transition={{ duration: 0.5, ease: 'easeInOut' }}
             className="w-full"
           >
-            <Card className="h-full bg-white dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 shadow-lg">
+            <Card className="h-full bg-white dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 shadow-lg p-2">
               <CardHeader className="flex flex-row items-center gap-4 pb-4">
-                <div className="p-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500">
-                  <theme.icon className="h-6 w-6" />
+                <div className="p-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500">
+                  <theme.icon className="h-8 w-8" />
                 </div>
-                <CardTitle className="font-display text-xl font-semibold text-slate-800 dark:text-slate-200">
+                <CardTitle className="font-display text-2xl font-semibold text-slate-800 dark:text-slate-200">
                   {theme.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">{theme.description}</p>
+                <p className="text-base text-muted-foreground">{theme.description}</p>
               </CardContent>
             </Card>
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="absolute -bottom-16 flex items-center justify-center w-full gap-4">
+      <div className="absolute -bottom-20 flex items-center justify-center w-full gap-4">
         <Button
           variant="outline"
           size="icon"
           onClick={prevSlide}
-          className="rounded-full h-10 w-10 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm"
+          className="rounded-full h-12 w-12 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm hover:scale-105 active:scale-95 transition-transform"
           aria-label="Previous Theme"
         >
-          <ArrowLeft className="h-5 w-5" />
+          <ArrowLeft className="h-6 w-6" />
         </Button>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {themes.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={cn(
-                'h-2 w-2 rounded-full transition-all duration-300',
-                currentSlide === index ? 'w-6 bg-blue-500' : 'bg-slate-300 dark:bg-slate-700'
+                'h-2.5 w-2.5 rounded-full transition-all duration-300',
+                currentSlide === index ? 'w-8 bg-blue-500' : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600'
               )}
               aria-label={`Go to theme ${index + 1}`}
             />
@@ -117,10 +124,10 @@ function ThemesSlider() {
           variant="outline"
           size="icon"
           onClick={nextSlide}
-          className="rounded-full h-10 w-10 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm"
+          className="rounded-full h-12 w-12 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm hover:scale-105 active:scale-95 transition-transform"
           aria-label="Next Theme"
         >
-          <ArrowRight className="h-5 w-5" />
+          <ArrowRight className="h-6 w-6" />
         </Button>
       </div>
     </div>
