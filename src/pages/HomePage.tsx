@@ -29,7 +29,7 @@ export function HomePage() {
     <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50">
       <HeroSection />
       <main id="themes" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-16 md:py-24 lg:py-32">
+        <div className="min-h-screen flex flex-col items-center justify-center py-16 md:py-24 lg:py-32">
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -69,8 +69,8 @@ function ThemesSlider() {
   };
   const theme = themes[currentSlide];
   return (
-    <div className="relative flex flex-col items-center justify-center">
-      <div className="w-full max-w-3xl min-h-[300px] sm:min-h-[260px]">
+    <div className="relative flex flex-col items-center justify-center w-full">
+      <div className="w-full max-w-5xl min-h-[400px] md:min-h-[350px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -81,23 +81,23 @@ function ThemesSlider() {
             transition={{ duration: 0.5, ease: 'easeInOut' }}
             className="w-full"
           >
-            <Card className="h-full bg-white dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 shadow-lg p-2">
-              <CardHeader className="flex flex-row items-center gap-4 pb-4">
-                <div className="p-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500">
-                  <theme.icon className="h-8 w-8" />
+            <Card className="h-full bg-white dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 shadow-lg p-8 md:p-12">
+              <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-6">
+                <div className="p-5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500">
+                  <theme.icon className="h-10 w-10" />
                 </div>
-                <CardTitle className="font-display text-2xl font-semibold text-slate-800 dark:text-slate-200">
+                <CardTitle className="font-display text-3xl md:text-4xl font-semibold text-slate-800 dark:text-slate-200">
                   {theme.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-base text-muted-foreground">{theme.description}</p>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{theme.description}</p>
               </CardContent>
             </Card>
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="absolute -bottom-20 flex items-center justify-center w-full gap-4">
+      <div className="absolute -bottom-24 flex items-center justify-center w-full gap-4">
         <Button
           variant="outline"
           size="icon"
