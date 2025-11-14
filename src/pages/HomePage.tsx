@@ -160,7 +160,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          Build on the Future of Infrastructure
+          Everything we learned from powering 20% of the Internet—yours by default
         </motion.h1>
         <motion.p
           className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-balance"
@@ -168,8 +168,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
         >
-          Discover the three core themes that define development on Cloudflare's
-          region-less, consolidated, and opinionated platform.
+          Cloudflare is your AI Cloud with compute, AI inference, and storage — letting you ship applications instead of managing infrastructure.
         </motion.p>
       </div>
       <motion.div
