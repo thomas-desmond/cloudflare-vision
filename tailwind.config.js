@@ -150,6 +150,11 @@ export default {
   			glass: '0 8px 32px 0 rgba(31, 38, 135, 0.37)'
   		},
   		keyframes: {
+            'background-pan': {
+                '0%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+                '100%': { backgroundPosition: '0% 50%' },
+            },
   			'fade-in': {
   				'0%': {
   					opacity: '0',
@@ -222,6 +227,7 @@ export default {
   			}
   		},
   		animation: {
+            'background-pan': 'background-pan 15s ease-in-out infinite',
   			'fade-in': 'fade-in 0.6s ease-out',
   			'slide-up': 'slide-up 0.4s ease-out',
   			'scale-in': 'scale-in 0.3s ease-out',
