@@ -2,7 +2,7 @@
 
 A visually stunning, single-page presentation landing page to introduce the core themes of Cloudflare's developer platform.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/thomas-desmond/cloudflare-vision)
 
 ## About The Project
 
@@ -88,7 +88,7 @@ This project is configured for seamless deployment to the Cloudflare global netw
 
 You can deploy this project to your own Cloudflare account with a single click.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/thomas-desmond/cloudflare-vision)
 
 ### Manual Deployment via CLI
 
